@@ -2,22 +2,28 @@ name: Issue test
 on: push
 jobs:
   data:
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
     outputs:
-      result: ${{ steps.data.outputs.result }}
+      result: ${{ steps.set-output.outputs.result }}
     steps:
      - name: data
+       id: data
        uses: actions/github-script@v6
        with:
           script: |
-            result="§";
+            const result = "§";
+            core.setOutput("result", result);
+     - name: Set Output
+       id: set-output
+       run: echo "result=${{ steps.data.outputs.result }}" >> $GITHUB_ENV
+
   issue-test:
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
     needs: data
     steps:
      - name: MyNormalAction
        uses: actions/github-script@v6
        with:
           script: |
-            var some_variable = "${{ needs.get-data.outputs.result }}";
-            echo "$some_variable";
+            const some_variable = "${{ needs.data.outputs.result }}";
+            console.log(some_variable);
