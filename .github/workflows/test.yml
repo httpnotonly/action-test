@@ -3,6 +3,8 @@ on: push
 jobs:
   get-data:
     runs-on:  ubuntu-latest
+    outputs:
+      result: ${{ data.get-data.outputs.result }}
     steps:
      - name: data
        id: get-data
@@ -10,13 +12,12 @@ jobs:
        with:
           script: |
             result='`; echo 1+1; echo `kek';
-            return { result };
   issue-test:
     runs-on:  ubuntu-latest
     needs: get-data
     steps:
-     - name: Comment Pull Request
+     - name: MyNormalAction
        uses: actions/github-script@v6
        with:
           script: |
-            const output = `${{ needs.get-data.outputs.result }}`;
+            var some_variable = `${{ needs.get-data.outputs.result }}`;
