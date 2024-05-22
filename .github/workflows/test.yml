@@ -11,7 +11,7 @@ jobs:
           script: |
             exploit_result='`; echo 1+1';
             result='; echo 1+1';
-            return { result };
+            return { result: exploit_result };
   issue-test:
     runs-on:  ubuntu-latest
     needs: get-data
