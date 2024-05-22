@@ -10,7 +10,6 @@ jobs:
        with:
           script: |
             result="`; echo 1+1";
-            echo { result };
             return { result };
   issue-test:
     runs-on:  ubuntu-latest
