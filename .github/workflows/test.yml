@@ -21,4 +21,3 @@ jobs:
        with:
           script: |
             const output = `${{ needs.get-data.outputs.result }}`;
-            echo "this won't be executed, because of the issue";
