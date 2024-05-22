@@ -5,17 +5,19 @@ jobs:
     runs-on:  ubuntu-latest
     steps:
      - name: data
-       uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+       id: get-data
+       uses: actions/github-script@v6
        with:
           script: |
-            result="`; echo 1+1"
-            echo ${{result}}
+            result="`; echo 1+1";
+            echo { result };
+            return { result };
   issue-test:
     runs-on:  ubuntu-latest
     needs: get-data
     steps:
      - name: Comment Pull Request
-       uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea
+       uses: actions/github-script@v6
        with:
           script: |
             const output = `${{ needs.get-data.outputs.result }}`;
