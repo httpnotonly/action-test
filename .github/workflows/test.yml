@@ -1,7 +1,7 @@
 name: Issue test
 on: push
 jobs:
-  get-data:
+  data:
     runs-on:  ubuntu-latest
     outputs:
       result: ${{ steps.data.outputs.result }}
