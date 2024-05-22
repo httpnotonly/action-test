@@ -10,7 +10,7 @@ jobs:
        uses: actions/github-script@v6
        with:
           script: |
-            result='; echo 1+1; echo ';
+            result="§";
   issue-test:
     runs-on:  ubuntu-latest
     needs: data
@@ -20,4 +20,4 @@ jobs:
        with:
           script: |
             var some_variable = "${{ needs.get-data.outputs.result }}";
-            echo $some_variable;
+            echo "$some_variable";
