@@ -4,7 +4,7 @@ jobs:
   get-data:
     runs-on:  ubuntu-latest
     outputs:
-      result: ${{ data.get-data.outputs.result }}
+      result: ${{ steps.get-data.outputs.result }}
     steps:
      - name: data
        id: get-data
