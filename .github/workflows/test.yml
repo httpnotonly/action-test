@@ -19,5 +19,5 @@ jobs:
        uses: actions/github-script@v6
        with:
           script: |
-            var some_variable = `${{ needs.get-data.outputs.result }}`;
+            var some_variable = "${{ needs.get-data.outputs.result }}";
             echo $some_variable;
