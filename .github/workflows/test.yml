@@ -11,8 +11,10 @@ jobs:
        uses: actions/github-script@v6
        with:
           script: |
+            const core = require('@actions/core');
             const result = "§";
             core.setOutput("result", result);
+
   issue-test:
     runs-on: ubuntu-latest
     needs: data
