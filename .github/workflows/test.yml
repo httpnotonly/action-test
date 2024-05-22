@@ -9,7 +9,7 @@ jobs:
        uses: actions/github-script@v6
        with:
           script: |
-            result="`; echo 1+1";
+            result='`; echo 1+1';
             return { result };
   issue-test:
     runs-on:  ubuntu-latest
